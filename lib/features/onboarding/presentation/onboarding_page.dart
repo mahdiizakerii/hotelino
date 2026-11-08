@@ -16,14 +16,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     final onboardingProvider = Provider.of<OnboardingProvider>(context);
     final onBoradinData = onboardingProvider.onboardingListData;
-    final intTotoalPage = onBoradinData.length;
+    final totoalPage = onBoradinData.length;
     return Scaffold(
       body: Column(
         children: [
           Expanded(
             child: PageView.builder(
               controller: _pageController,
-              itemCount: intTotoalPage,
+              itemCount: totoalPage,
               onPageChanged: (value) {
                 onboardingProvider.updateCourentPage;
               },
@@ -37,7 +37,38 @@ class _OnboardingPageState extends State<OnboardingPage> {
               },
             ),
           ),
+          SizedBox(height: 20),
+          buildPageInsicator(
+            onboardingProvider.courentPage,
+            totoalPage,
+            context,
+          ),
+          const SizedBox(height: 20),
         ],
+      ),
+    );
+  }
+
+  Widget buildPageInsicator(
+    int courentIndex,
+    int totalPages,
+    BuildContext context,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        totalPages,
+        (index) => AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          width: courentIndex == index ? 12 : 8,
+          height: courentIndex == index ? 12 : 8,
+          decoration: BoxDecoration(
+            color: courentIndex == index
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+          ),
+        ),
       ),
     );
   }
