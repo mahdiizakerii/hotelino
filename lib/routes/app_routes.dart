@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hotelino/features/home/home_page.dart';
-import 'package:hotelino/features/onboarding/onboarding_page.dart';
+import 'package:hotelino/features/onboarding/presentation/onboarding_page.dart';
 
 class AppRoutes {
   static const String home = '/';

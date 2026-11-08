@@ -7,9 +7,9 @@ class OnboardingProvider extends ChangeNotifier {
     _loadData();
   }
 
-  List<Map<String, String>> onboardingData = [];
+  List<Map<String, String>> onboardingListData = [];
   void _loadData() {
-    onboardingData = repository.onBoarding_Data;
+    onboardingListData = repository.onBoardingData;
     notifyListeners();
   }
 
