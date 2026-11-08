@@ -3,7 +3,6 @@ import 'package:hotelino/bootstrap.dart';
 import 'package:hotelino/core/theme/theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:hotelino/features/home/home_page.dart';
 import 'package:hotelino/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
