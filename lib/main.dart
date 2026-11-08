@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hotelino/bootstrap.dart';
 import 'package:hotelino/core/theme/theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
@@ -9,6 +10,7 @@ import 'package:hotelino/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  usePathUrlStrategy();
   //Bootstrapping
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);

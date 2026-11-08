@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotelino/features/onboarding/presentation/onboarding_provider.dart';
+import 'package:hotelino/features/onboarding/presentation/widgets/onboarding_button.dart';
 import 'package:hotelino/features/onboarding/presentation/widgets/onboarding_item.dart';
+import 'package:hotelino/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -25,7 +28,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               controller: _pageController,
               itemCount: totoalPage,
               onPageChanged: (value) {
-                onboardingProvider.updateCourentPage;
+                onboardingProvider.updateCourentPage(value);
               },
               itemBuilder: (context, index) {
                 final data = onBoradinData[index];
@@ -37,16 +40,102 @@ class _OnboardingPageState extends State<OnboardingPage> {
               },
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           buildPageInsicator(
             onboardingProvider.courentPage,
             totoalPage,
             context,
           ),
           const SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OnboardingButton(
+                  visible: onboardingProvider.courentPage > 0,
+                  icon: SvgPicture.asset('assets/icon/preview.svg'),
+                  onPressed: _previewsPage,
+                  backgroundColor: Colors.transparent,
+                  iconColor: Theme.of(context).colorScheme.primary,
+                ),
+                OnboardingButton(
+                  visible: onboardingProvider.courentPage < totoalPage - 1,
+                  icon: SvgPicture.asset('assets/icon/next.svg'),
+                  onPressed: _nextviewsPage,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  iconColor: Colors.white,
+                ),
+              ],
+            ),
+          ),
+
+          SizedBox(height: 30),
+          if (totoalPage > 1) ...[
+            AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) {
+                return SizeTransition(child: child, sizeFactor: animation);
+              },
+              child: onboardingProvider.courentPage == totoalPage - 1
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
+                      ),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              AppRoutes.home,
+                            );
+                          },
+                          child: const Text('شروع رزرو هتل ها'),
+                        ),
+                      ),
+                    )
+                  : null,
+            ),
+          ],
         ],
       ),
     );
+  }
+
+  void _nextviewsPage() {
+    final onboardingProvider = Provider.of<OnboardingProvider>(
+      context,
+      listen: false,
+    );
+    if (onboardingProvider.courentPage <
+        onboardingProvider.onboardingListData.length - 1) {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    }
+  }
+
+  void _previewsPage() {
+    final onboardingProvider = Provider.of<OnboardingProvider>(
+      context,
+      listen: false,
+    );
+    if (onboardingProvider.courentPage > 0) {
+      _pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   Widget buildPageInsicator(
@@ -67,6 +156,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             color: courentIndex == index
                 ? Theme.of(context).colorScheme.primary
                 : Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+            shape: BoxShape.circle,
           ),
         ),
       ),
