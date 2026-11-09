@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hotelino/core/constants/constants.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:hotelino/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
@@ -58,6 +57,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           Consumer<ProfileProvider>(
             builder: (context, profileProvider, child) {
+              final avatarUrl = profileProvider.profile?.avatarUrl;
               return Row(
                 children: [
                   Text(
@@ -67,9 +67,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   SizedBox(width: 8),
                   CircleAvatar(
                     radius: 20,
-                    backgroundImage: NetworkImage(
-                      profileProvider.profile!.avatarUrl,
-                    ),
+                    backgroundImage: avatarUrl == null || avatarUrl.isEmpty
+                        ? null
+                        : NetworkImage(avatarUrl),
+                    child: avatarUrl == null || avatarUrl.isEmpty
+                        ? const Icon(Icons.person_outline)
+                        : null,
                   ),
                 ],
               );
