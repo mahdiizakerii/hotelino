@@ -6,7 +6,7 @@ class HotelRepository {
 
   HotelRepository({required this.jsonDataService});
 
-  Future<Future<Iterable<Hotel>>> fetchHotels() async {
+  Future<List<Hotel>> fetchHotels() async {
     return jsonDataService.loadHotels();
   }
 

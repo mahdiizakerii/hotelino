@@ -5,7 +5,7 @@ import 'package:hotelino/core/constants/constants.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 
 class JsonDataService {
-  Future<Iterable<Hotel>> loadHotels() async {
+  Future<List<Hotel>> loadHotels() async {
     final String response = await rootBundle.loadString(
       AppConstants.hotelsData,
     );
