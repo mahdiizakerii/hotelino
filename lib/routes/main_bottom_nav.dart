@@ -51,6 +51,21 @@ class _MainBottomNavState extends State<MainBottomNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
+          'assets/image/nav_favorite.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: SvgPicture.asset(
+          'assets/image/nav_profile.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        ),
+        activeColorPrimary: AppColors.primary,
+        inactiveIcon: SvgPicture.asset(
           'assets/image/nav_profile.svg',
           width: 20,
           height: 20,

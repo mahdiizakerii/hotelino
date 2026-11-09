@@ -9,7 +9,6 @@ import 'package:hotelino/features/home/presentation/provider/home_provider.dart'
 import 'package:hotelino/features/onboarding/data/repository/onboarding_repository.dart';
 import 'package:hotelino/features/onboarding/presentation/onboarding_provider.dart';
 import 'package:hotelino/features/profile/provider/profile_provider.dart';
-import 'package:hotelino/features/profile/repository/models/profile.dart';
 import 'package:hotelino/features/profile/repository/profile_repository.dart';
 import 'package:hotelino/routes/app_routes.dart';
 import 'package:hotelino/shared/services/json_data_service.dart';
