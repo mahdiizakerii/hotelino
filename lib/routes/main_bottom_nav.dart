@@ -35,7 +35,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          'assets/iamge/nav_home.svg',
+          'assets/image/nav_home.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -50,7 +50,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          'assets/iamge/nav_favorite.svg',
+          'assets/image/nav_profile.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -65,7 +65,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          'assets/iamge/nav_booking.svg',
+          'assets/image/nav_booking.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -82,6 +82,17 @@ class _MainBottomNavState extends State<MainBottomNav> {
       screens: buildScreens(),
       items: navBarItems(),
       backgroundColor: Theme.of(context).colorScheme.surface,
+      navBarStyle: NavBarStyle.style7,
+      hideNavigationBarWhenKeyboardAppears: true,
+      stateManagement: true,
+      handleAndroidBackButtonPress: true,
+      confineToSafeArea: true,
+      animationSettings: NavBarAnimationSettings(
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+      ),
     );
   }
 }
