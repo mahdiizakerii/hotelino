@@ -22,9 +22,10 @@ class ProfileProvider extends ChangeNotifier {
 
   Future<void> loadUserProfile() async {
     _profile = await _profileRepository.fetchProfile();
+    notifyListeners();
   }
 
-  // recently---------------------------------------------------------------------------------------
+  // recently--------------------------------------------------------------------------------------------------------------------
 
   final List<String> _recentlyViewedHotel = [];
   List<Hotel> get recentlyViewedHotel =>
