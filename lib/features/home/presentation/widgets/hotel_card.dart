@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/core/utils/nertworkUrl.dart';
 import 'package:hotelino/core/utils/price_formater.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/presentation/provider/favorite_item_provider.dart';
@@ -6,7 +7,7 @@ import 'package:provider/provider.dart';
 
 class HotelCard extends StatelessWidget {
   Hotel hotel;
-  HotelCard(id, {super.key, required this.hotel});
+  HotelCard({super.key, required this.hotel});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +17,23 @@ class HotelCard extends StatelessWidget {
       width: 280,
       child: Card(
         elevation: 4,
-        margin: EdgeInsets.all(0),
+        margin: EdgeInsets.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Stack(),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.network(
+                    netwrkUrl(hotel.images[0]),
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -35,7 +48,7 @@ class HotelCard extends StatelessWidget {
                         "${hotel.rating} (${formatPrice(hotel.reviewCount)})",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(width: 5),
+                      Spacer(),
                       Text(
                         hotel.name,
                         style: TextStyle(
@@ -52,8 +65,8 @@ class HotelCard extends StatelessWidget {
                     children: [
                       SizedBox(width: 8),
                       Text(
-                        "${hotel.city}"
-                        "${hotel.country}",
+                        '${hotel.city} '
+                        '${hotel.country}',
                         style: TextStyle(color: Colors.grey),
                       ),
                       SizedBox(width: 4),
