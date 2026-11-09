@@ -18,15 +18,6 @@ class favorite extends StatelessWidget {
   }
 }
 
-class booking extends StatelessWidget {
-  const new({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
 class profile extends StatelessWidget {
   const new({super.key});
 
