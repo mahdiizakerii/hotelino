@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelino/features/home/presentation/provider/home_provider.dart';
+import 'package:hotelino/features/home/presentation/provider/widgets/home_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,6 +9,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
-    return Scaffold(appBar: AppBar(), body: Center());
+    return Scaffold(appBar: HomeAppBar(), body: Center());
   }
 }

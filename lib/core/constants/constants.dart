@@ -4,6 +4,8 @@ import 'package:hotelino/features/home/data/models/home_page_data.dart';
 class AppConstants {
   static const String baseUrlImage = "https://dunijet.ir/contents/ext/";
   static const String hotelsData = "assets/data/hotel.json";
+  static const String avatarProfile =
+      "https://avatars.githubusercontent.com/u/349419237?v=4";
 }
 
 class AppColors {
