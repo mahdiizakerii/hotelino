@@ -30,6 +30,16 @@ class HomePage extends StatelessWidget {
                 );
               },
             ),
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return HotelListSection(
+                  title: "پیشنهاد ویژه",
+                  hotels: homeProvider.getSpecialOffersHotels(),
+                  onSeeAllPressed: () {},
+                );
+              },
+            ),
+            SizedBox(height: 16),
           ],
         ),
       ),

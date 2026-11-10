@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^2.3.2
   persistent_bottom_nav_bar: ^6.2.1
   intl: ^0.20.3
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:
