@@ -6,6 +6,7 @@ import 'package:hotelino/features/home/presentation/provider/favorite_item_provi
 import 'package:hotelino/features/home/presentation/widgets/aniamtedFavoriteButton.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class HotelCard extends StatelessWidget {
   Hotel hotel;
   HotelCard({super.key, required this.hotel});
