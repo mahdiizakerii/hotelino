@@ -3,6 +3,7 @@ import 'package:hotelino/core/utils/nertworkUrl.dart';
 import 'package:hotelino/core/utils/price_formater.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/presentation/provider/favorite_item_provider.dart';
+import 'package:hotelino/features/home/presentation/widgets/aniamtedFavoriteButton.dart';
 import 'package:provider/provider.dart';
 
 class HotelCard extends StatelessWidget {
@@ -30,6 +31,16 @@ class HotelCard extends StatelessWidget {
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: AnimatedFavoriteButton(
+                    isFavorite: isFavorite,
+                    onTap: () {
+                      favoriteProvider.toggleFavorite(hotel.id);
+                    },
                   ),
                 ),
               ],
