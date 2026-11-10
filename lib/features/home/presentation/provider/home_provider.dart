@@ -46,13 +46,15 @@ class HomeProvider extends ChangeNotifier {
   //story section
   List<String> getStoryImage() {
     final shuffledHotels = List<Hotel>.from(_hotels)..shuffle();
-    return shuffledHotels.take(3).map((hotels) => hotels.images[0]).toList();
+    return shuffledHotels.take(5).map((hotels) => hotels.images[0]).toList();
   }
 
   final List<String> _titleStory = [
-    "امکانات رفاهی",
+    "امکانات رفاهی کامل",
     "لوکس ترین هتل ها",
-    "بهترین قیمت",
+    "بهترین قیمت ها",
+    "محبوب ترین هتل",
+    "پر بازدید ترین هتل",
   ];
 
   List<String> get titleStory => _titleStory;

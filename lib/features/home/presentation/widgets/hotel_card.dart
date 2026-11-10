@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotelino/core/utils/nertworkUrl.dart';
+import 'package:hotelino/core/utils/networkUrl.dart';
 import 'package:hotelino/core/utils/price_formater.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/presentation/provider/favorite_item_provider.dart';

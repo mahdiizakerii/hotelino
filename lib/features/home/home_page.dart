@@ -4,6 +4,7 @@ import 'package:hotelino/features/home/presentation/widgets/add_banner.dart';
 import 'package:hotelino/features/home/presentation/widgets/home_app_bar.dart';
 import 'package:hotelino/features/home/presentation/widgets/hotel_list_section.dart';
 import 'package:hotelino/features/home/presentation/widgets/search_bar_widget.dart';
+import 'package:hotelino/features/home/presentation/widgets/story_carousel.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,6 +41,14 @@ class HomePage extends StatelessWidget {
               },
             ),
             SizedBox(height: 16),
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return StoryCarousel(
+                  images: homeProvider.getStoryImage(),
+                  title: homeProvider.titleStory,
+                );
+              },
+            ),
           ],
         ),
       ),
