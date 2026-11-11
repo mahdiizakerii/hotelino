@@ -4,6 +4,7 @@ import 'package:hotelino/bootstrap.dart';
 import 'package:hotelino/core/theme/theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hotelino/features/booking/presentation/provider/booking_provider.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
 import 'package:hotelino/features/favorite/data/provider/favorite_provider.dart';
 import 'package:hotelino/features/home/presentation/provider/home_provider.dart';
@@ -48,6 +49,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (_) => FavoriteProvider(hotelRepository)..fetchHotels(),
         ),
+        ChangeNotifierProvider(create: (_) => BookingProvider()),
       ],
       child: MyApp(onboardingCompleted: onboardingCompleted),
     ),
