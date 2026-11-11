@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotelino/core/constants/constants.dart';
-import 'package:hotelino/features/home/home_page.dart';
+import 'package:hotelino/features/favorite/presentation/favorite_page.dart';
+import 'package:hotelino/features/home/presentation/home_page.dart';
 import 'package:hotelino/routes/test.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -22,7 +24,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
   }
 
   List<Widget> buildScreens() {
-    return [HomePage(), favorite(), profile(), booking()];
+    return [HomePage(), FavoritePage(), profile(), booking()];
   }
 
   List<PersistentBottomNavBarItem> navBarItems() {
@@ -94,6 +96,19 @@ class _MainBottomNavState extends State<MainBottomNav> {
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
+      handleAndroidBackButtonPress: false,
+      onItemSelected: (value) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      onWillPop: (context) async {
+        if (_controller.index != 0) {
+          _controller.jumpToTab(0);
+          return false;
+        }
+
+        await SystemNavigator.pop();
+        return false;
+      },
       controller: _controller,
       screens: buildScreens(),
       items: navBarItems(),
@@ -101,7 +116,6 @@ class _MainBottomNavState extends State<MainBottomNav> {
       navBarStyle: NavBarStyle.style7,
       hideNavigationBarWhenKeyboardAppears: true,
       stateManagement: true,
-      handleAndroidBackButtonPress: true,
       confineToSafeArea: true,
       animationSettings: NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(

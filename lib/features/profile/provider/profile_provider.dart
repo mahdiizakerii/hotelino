@@ -18,6 +18,7 @@ class ProfileProvider extends ChangeNotifier {
 
   Future<void> fetchHotels() async {
     _hotel = await _hotelRepository.fetchHotels();
+    notifyListeners();
   }
 
   Future<void> loadUserProfile() async {
@@ -28,17 +29,19 @@ class ProfileProvider extends ChangeNotifier {
   // recently--------------------------------------------------------------------------------------------------------------------
 
   final List<String> _recentlyViewedHotel = [];
-  List<Hotel> get recentlyViewedHotel =>
-      _hotel.where((hotel) => recentlyViewedHotel.contains(hotel.id)).toList();
-
-  void addRecentlyViwed(String hotelId) {
-    if (!recentlyViewedHotel.contains(hotelId)) {
-      _recentlyViewedHotel.add(hotelId);
-      notifyListeners();
-    } else {
-      _recentlyViewedHotel.remove(hotelId);
-      _recentlyViewedHotel.add(hotelId);
-      notifyListeners();
-    }
+  List<Hotel> get recentlyViewedHotel {
+    return _hotel
+        .where((hotel) => _recentlyViewedHotel.contains(hotel.id))
+        .toList();
   }
+
+  void addRecentlyViewed(String hotelId) {
+    if (_recentlyViewedHotel.contains(hotelId)) {
+      _recentlyViewedHotel.remove(hotelId);
+    }
+    _recentlyViewedHotel.add(hotelId);
+    notifyListeners();
+  }
+
+  void addRecentlyViwed(String hotelId) => addRecentlyViewed(hotelId);
 }

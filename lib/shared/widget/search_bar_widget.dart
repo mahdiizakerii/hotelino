@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SearchBarWidget extends StatelessWidget {
+class SearchBarWidget extends StatefulWidget {
   const SearchBarWidget({super.key});
 
+  @override
+  State<SearchBarWidget> createState() => _SearchBarWidgetState();
+}
+
+class _SearchBarWidgetState extends State<SearchBarWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -29,6 +34,8 @@ class SearchBarWidget extends StatelessWidget {
             ),
             Expanded(
               child: TextField(
+                keyboardType: TextInputType.text,
+                enableSuggestions: true,
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
                   filled: false,

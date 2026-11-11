@@ -4,6 +4,7 @@ import 'package:hotelino/features/onboarding/presentation/onboarding_provider.da
 import 'package:hotelino/features/onboarding/presentation/widgets/onboarding_button.dart';
 import 'package:hotelino/features/onboarding/presentation/widgets/onboarding_item.dart';
 import 'package:hotelino/routes/app_routes.dart';
+import 'package:hotelino/shared/services/onboarding_storage_service.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -87,7 +88,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         width: double.infinity,
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            await OnboardingStorageService.setCompleted();
+                            if (!context.mounted) return;
                             Navigator.pushReplacementNamed(
                               context,
                               AppRoutes.home,

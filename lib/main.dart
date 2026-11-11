@@ -5,7 +5,7 @@ import 'package:hotelino/core/theme/theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
-import 'package:hotelino/features/home/presentation/provider/favorite_item_provider.dart';
+import 'package:hotelino/features/favorite/data/provider/favorite_item_provider.dart';
 import 'package:hotelino/features/home/presentation/provider/home_provider.dart';
 import 'package:hotelino/features/onboarding/data/repository/onboarding_repository.dart';
 import 'package:hotelino/features/onboarding/presentation/onboarding_provider.dart';
@@ -13,6 +13,7 @@ import 'package:hotelino/features/profile/provider/profile_provider.dart';
 import 'package:hotelino/features/profile/repository/profile_repository.dart';
 import 'package:hotelino/routes/app_routes.dart';
 import 'package:hotelino/shared/services/json_data_service.dart';
+import 'package:hotelino/shared/services/onboarding_storage_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -21,9 +22,12 @@ void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await lazyBootStrap();
-  FlutterNativeSplash.remove();
 
   final hotelRepository = HotelRepository(jsonDataService: JsonDataService());
+
+  final onboardingCompleted = await OnboardingStorageService.isCompleted();
+
+  FlutterNativeSplash.remove();
 
   runApp(
     MultiProvider(
@@ -44,13 +48,15 @@ void main() async {
           create: (_) => FavoriteItemProvider(hotelRepository),
         ),
       ],
-      child: const MyApp(),
+      child: MyApp(onboardingCompleted: onboardingCompleted),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final bool onboardingCompleted;
+
+  const MyApp({super.key, required this.onboardingCompleted});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -87,7 +93,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         return MaterialApp(
           title: 'Hotelino',
           routes: AppRoutes.routes,
-          initialRoute: AppRoutes.onboarding,
+          initialRoute: widget.onboardingCompleted
+              ? AppRoutes.home
+              : AppRoutes.onboarding,
           debugShowCheckedModeBanner: false,
           theme: value.brightness == Brightness.light
               ? AppTheme.lightTheme
