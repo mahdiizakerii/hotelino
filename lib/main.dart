@@ -5,7 +5,7 @@ import 'package:hotelino/core/theme/theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
-import 'package:hotelino/features/favorite/data/provider/favorite_item_provider.dart';
+import 'package:hotelino/features/favorite/data/provider/favorite_provider.dart';
 import 'package:hotelino/features/home/presentation/provider/home_provider.dart';
 import 'package:hotelino/features/onboarding/data/repository/onboarding_repository.dart';
 import 'package:hotelino/features/onboarding/presentation/onboarding_provider.dart';
@@ -45,7 +45,7 @@ void main() async {
           create: (_) => ProfileProvider(ProfileRepository(), hotelRepository),
         ),
         ChangeNotifierProvider(
-          create: (_) => FavoriteItemProvider(hotelRepository),
+          create: (_) => FavoriteProvider(hotelRepository),
         ),
       ],
       child: MyApp(onboardingCompleted: onboardingCompleted),

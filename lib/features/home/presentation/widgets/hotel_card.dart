@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/core/utils/networkUrl.dart';
 import 'package:hotelino/core/utils/price_formater.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
-import 'package:hotelino/features/favorite/data/provider/favorite_item_provider.dart';
+import 'package:hotelino/features/favorite/data/provider/favorite_provider.dart';
 import 'package:hotelino/features/home/presentation/widgets/aniamtedFavoriteButton.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ class HotelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = Provider.of<FavoriteItemProvider>(context);
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
     final isFavorite = favoriteProvider.isFavorite(hotel.id);
     return SizedBox(
       width: 280,

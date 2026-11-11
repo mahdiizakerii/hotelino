@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
 
-class FavoriteItemProvider extends ChangeNotifier {
+class FavoriteProvider extends ChangeNotifier {
   final HotelRepository _hotelRepository;
 
-  FavoriteItemProvider(this._hotelRepository);
-  List<Hotel> _hotels = [];
-  final List<String> _favoriteHotelId = [];
-  List<Hotel> get _favoriteHotelList =>
-      _hotels.where((hotelId) => _favoriteHotelId.contains(hotelId)).toList();
+  FavoriteProvider(this._hotelRepository);
 
-  fetchHotels() async {
+  List<Hotel> _hotels = [];
+
+  final List<String> _favoriteHotelId = [];
+  List<Hotel> get favoriteHotelList =>
+      _hotels.where((hotels) => _favoriteHotelId.contains(hotels.id)).toList();
+
+  Future<void> fetchHotels() async {
     _hotels = await _hotelRepository.fetchHotels();
     notifyListeners();
   }
