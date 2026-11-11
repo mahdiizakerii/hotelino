@@ -17,7 +17,7 @@ class FavoriteHotelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 180,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
@@ -54,32 +54,35 @@ class FavoriteHotelCard extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 2),
                       Text(
                         hotel.name,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("${hotel.city}, ${hotel.country}"),
-                          const SizedBox(width: 5),
+                          Text(
+                            "${hotel.city}, ${hotel.country}",
+                            textAlign: TextAlign.right,
+                          ),
+                          const SizedBox(width: 4),
                           Icon(
                             Icons.location_on,
                             color: Theme.of(context).colorScheme.primary,
-                            size: 18,
+                            size: 14,
                           ),
                         ],
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -87,20 +90,17 @@ class FavoriteHotelCard extends StatelessWidget {
                             "${hotel.bedType.count} ${hotel.bedType.details}",
                             textDirection: TextDirection.rtl,
                           ),
-                          const SizedBox(width: 5),
+                          const SizedBox(width: 2),
                           Icon(
                             Icons.bed,
                             color: Theme.of(context).colorScheme.primary,
-                            size: 18,
+                            size: 14,
                           ),
                         ],
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        "از ${formatPrice(hotel.pricePerNight)} / شب",
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 2),
+                      Text("شبی از ${formatPrice(hotel.pricePerNight)}"),
+                      const SizedBox(height: 2),
                     ],
                   ),
                 ),
