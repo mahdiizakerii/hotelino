@@ -11,6 +11,11 @@ class BookingProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void setDestination(String value) {
+    _booking.destination = value;
+    notifyListeners();
+  }
+
   void setNumber(String value) {
     _booking.phoneNumber = value;
     notifyListeners();
