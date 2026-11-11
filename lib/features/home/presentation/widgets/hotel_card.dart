@@ -93,7 +93,7 @@ class HotelCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: Text(
-                      "از ${formatPrice(hotel.pricePerNight)} / شبی",
+                      "شبی از ${formatPrice(hotel.pricePerNight)}",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
