@@ -47,7 +47,7 @@ void main() async {
           create: (_) => ProfileProvider(ProfileRepository(), hotelRepository),
         ),
         ChangeNotifierProvider(
-          create: (_) => FavoriteItemProvider(hotelRepository),
+          create: (_) => FavoriteItemProvider(hotelRepository)..fetchHotels(),
         ),
         ChangeNotifierProvider(create: (_) => BookingProvider()),
       ],
