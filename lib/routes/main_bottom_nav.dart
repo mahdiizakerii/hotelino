@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotelino/core/constants/constants.dart';
+import 'package:hotelino/features/booking/presentation/widget/booking_page.dart';
 import 'package:hotelino/features/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/features/home/presentation/home_page.dart';
 import 'package:hotelino/routes/test.dart';
@@ -24,7 +25,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
   }
 
   List<Widget> buildScreens() {
-    return [HomePage(), FavoritePage(), profile(), booking()];
+    return [HomePage(), FavoritePage(), BookingPage(), profile()];
   }
 
   List<PersistentBottomNavBarItem> navBarItems() {
@@ -61,14 +62,14 @@ class _MainBottomNavState extends State<MainBottomNav> {
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          'assets/image/nav_profile.svg',
+          'assets/image/nav_booking.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          'assets/image/nav_profile.svg',
+          'assets/image/nav_booking.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -76,14 +77,14 @@ class _MainBottomNavState extends State<MainBottomNav> {
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          'assets/image/nav_booking.svg',
+          'assets/image/nav_profile.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          'assets/image/nav_booking.svg',
+          'assets/image/nav_profile.svg',
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),

@@ -8,12 +8,3 @@ class profile extends StatelessWidget {
     return const Scaffold();
   }
 }
-
-class booking extends StatelessWidget {
-  const booking({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
-  }
-}
