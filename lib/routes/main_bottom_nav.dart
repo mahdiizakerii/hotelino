@@ -24,7 +24,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
   }
 
   List<Widget> buildScreens() {
-    return [HomePage(), FavoritePage(), profile(), booking()];
+    return [HomePage(), FavoritePage(), booking(), profile()];
   }
 
   List<PersistentBottomNavBarItem> navBarItems() {
