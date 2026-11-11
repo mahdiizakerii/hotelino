@@ -15,6 +15,7 @@ class FavoriteProvider extends ChangeNotifier {
 
   Future<void> fetchHotels() async {
     _hotels = await _hotelRepository.fetchHotels();
+    debugPrint('Fetched hotels: ${_hotels.length}');
     notifyListeners();
   }
 
@@ -28,6 +29,7 @@ class FavoriteProvider extends ChangeNotifier {
     } else {
       _favoriteHotelId.add(hotelid);
     }
+
     notifyListeners();
   }
 }

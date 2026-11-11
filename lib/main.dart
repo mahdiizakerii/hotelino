@@ -45,7 +45,7 @@ void main() async {
           create: (_) => ProfileProvider(ProfileRepository(), hotelRepository),
         ),
         ChangeNotifierProvider(
-          create: (_) => FavoriteProvider(hotelRepository),
+          create: (_) => FavoriteProvider(hotelRepository)..fetchHotels(),
         ),
       ],
       child: MyApp(onboardingCompleted: onboardingCompleted),
