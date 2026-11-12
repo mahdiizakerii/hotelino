@@ -6,13 +6,16 @@ import 'package:hotelino/features/booking/presentation/widget/number_text_field.
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
+  static final GlobalKey<BookingPageState> bookingPageKey =
+      GlobalKey<BookingPageState>();
+
   const BookingPage({super.key});
 
   @override
-  State<BookingPage> createState() => _BookingPageState();
+  State<BookingPage> createState() => BookingPageState();
 }
 
-class _BookingPageState extends State<BookingPage> {
+class BookingPageState extends State<BookingPage> {
   final _formKey = GlobalKey<FormState>();
   void resetForm() {
     Future.delayed(

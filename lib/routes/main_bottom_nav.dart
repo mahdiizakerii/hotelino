@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotelino/core/constants/constants.dart';
+import 'package:hotelino/core/utils/keybord.dart';
 import 'package:hotelino/features/booking/booking_page.dart';
 import 'package:hotelino/features/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/features/home/presentation/home_page.dart';
@@ -98,8 +99,11 @@ class _MainBottomNavState extends State<MainBottomNav> {
     return PersistentTabView(
       context,
       handleAndroidBackButtonPress: false,
-      onItemSelected: (value) {
-        FocusManager.instance.primaryFocus?.unfocus();
+      onItemSelected: (index) {
+        unfucosEditor(context);
+        if (index != 2) {
+          BookingPage.bookingPageKey.currentState?.resetForm();
+        }
       },
       onWillPop: (context) async {
         if (_controller.index != 0) {
