@@ -9,7 +9,7 @@ class BookingPage extends StatefulWidget {
   static final GlobalKey<BookingPageState> bookingPageKey =
       GlobalKey<BookingPageState>();
 
-  const BookingPage({super.key});
+  BookingPage({Key? key}) : super(key: bookingPageKey);
 
   @override
   State<BookingPage> createState() => BookingPageState();
