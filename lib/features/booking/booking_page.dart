@@ -3,6 +3,7 @@ import 'package:hotelino/features/booking/presentation/provider/booking_provider
 import 'package:hotelino/features/booking/presentation/widget/booking_form_field.dart';
 import 'package:hotelino/features/booking/presentation/widget/date_picker_filed.dart';
 import 'package:hotelino/features/booking/presentation/widget/number_text_field.dart';
+<<<<<<< HEAD
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
@@ -13,12 +14,33 @@ class BookingPage extends StatefulWidget {
 }
 
 class _BookingPageState extends State<BookingPage> {
+=======
+import 'package:hotelino/features/booking/presentation/widget/terms_widget.dart';
+import 'package:provider/provider.dart';
+
+class BookingPage extends StatefulWidget {
+  static final GlobalKey<BookingPageState> bookingPageKey =
+      GlobalKey<BookingPageState>();
+
+  BookingPage({Key? key}) : super(key: bookingPageKey);
+
+  @override
+  State<BookingPage> createState() => BookingPageState();
+}
+
+class BookingPageState extends State<BookingPage> {
+>>>>>>> feature/booking
   final _formKey = GlobalKey<FormState>();
   void resetForm() {
     Future.delayed(
       Duration(milliseconds: 100),
       () => _formKey.currentState?.reset(),
     );
+<<<<<<< HEAD
+=======
+    TermsWidget.termsKey.currentState?.resetCkeckbBox();
+    NumberFormField.numberFieldKey.currentState?.resetEnteredNumber();
+>>>>>>> feature/booking
     setState(() {});
   }
 
@@ -53,7 +75,11 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
+<<<<<<< HEAD
                         if (value == null || value.isNotEmpty) {
+=======
+                        if (value == null || value.isEmpty) {
+>>>>>>> feature/booking
                           return "لطفا نام خود را وارد کنید";
                         }
                         return null;
@@ -71,8 +97,13 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
+<<<<<<< HEAD
                         if (value == null || value.isNotEmpty) {
                           return "لطفا نام خود را وارد کنید";
+=======
+                        if (value == null || value.isEmpty) {
+                          return " لطفا مقصد خود را وارد کنید";
+>>>>>>> feature/booking
                         }
                         return null;
                       },
@@ -106,7 +137,11 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
+<<<<<<< HEAD
                         if (value != null) {
+=======
+                        if (value == null || value.trim().isEmpty) {
+>>>>>>> feature/booking
                           return "تعداد نفرات خود را وارد کنید";
                         }
                         return null;
@@ -127,6 +162,36 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                     ),
+<<<<<<< HEAD
+=======
+                    TermsWidget(
+                      initialValue: false,
+                      validator: (value) {
+                        debugPrint('Terms value: $value');
+                        if (value != true) {
+                          return "لطفا قوانین را تایید کنید";
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) {},
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          debugPrint('BUTTON PRESSED');
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("درخواست شما موفقیت آمیز بود"),
+                              ),
+                            );
+                          }
+                        },
+                        child: Text("جستجوی هتل"),
+                      ),
+                    ),
+>>>>>>> feature/booking
                   ],
                 ),
               );

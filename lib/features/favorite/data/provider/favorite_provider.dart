@@ -5,7 +5,15 @@ import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
 class FavoriteProvider extends ChangeNotifier {
   final HotelRepository _hotelRepository;
 
+<<<<<<< HEAD:lib/features/favorite/data/provider/favorite_provider.dart
   FavoriteProvider(this._hotelRepository);
+=======
+  FavoriteItemProvider(this._hotelRepository);
+  List<Hotel> _hotels = [];
+  final List<String> _favoriteHotelId = [];
+  List<Hotel> get favoriteHotelList =>
+      _hotels.where((hotels) => _favoriteHotelId.contains(hotels.id)).toList();
+>>>>>>> feature/booking:lib/features/favorite/data/provider/favorite_item_provider.dart
 
   List<Hotel> _hotels = [];
 
