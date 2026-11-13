@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:hotelino/features/booking/presentation/provider/booking_provider.dart';
 import 'package:hotelino/features/booking/presentation/widget/booking_form_field.dart';
@@ -58,7 +60,7 @@ class BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
-                        if (value == null || value.isNotEmpty) {
+                        if (value == null || value.isEmpty) {
                           return "لطفا نام خود را وارد کنید";
                         }
                         return null;
@@ -76,8 +78,8 @@ class BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
-                        if (value == null || value.isNotEmpty) {
-                          return "لطفا نام خود را وارد کنید";
+                        if (value == null || value.isEmpty) {
+                          return " لطفا مقصد خود را وارد کنید";
                         }
                         return null;
                       },
@@ -111,7 +113,7 @@ class BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
-                        if (value != null) {
+                        if (value == null) {
                           return "تعداد نفرات خود را وارد کنید";
                         }
                         return null;

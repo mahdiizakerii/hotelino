@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/core/constants/constants.dart';
 
 class TermsWidget extends StatefulWidget {
+  // ignore: library_private_types_in_public_api
   static final GlobalKey<_TermsWidgetState> termsKey =
       GlobalKey<_TermsWidgetState>();
   final bool initialValue;
@@ -62,6 +64,16 @@ class _TermsWidgetState extends State<TermsWidget> {
                   ),
                 ),
                 Checkbox(
+                  side: BorderSide(
+                    color: field.hasError
+                        ? isChecked
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.error
+                        : isChecked
+                        ? Theme.of(context).colorScheme.primary
+                        : AppColors.lightBorder,
+                    width: 1.5,
+                  ),
                   visualDensity: VisualDensity(horizontal: -4),
                   value: isChecked,
                   onChanged: (value) {
@@ -70,12 +82,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                     });
                   },
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2),
-                    side: BorderSide(
-                      color: field.hasError
-                          ? Theme.of(context).colorScheme.error
-                          : Theme.of(context).colorScheme.primary,
-                    ),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   activeColor: Theme.of(context).colorScheme.primary,
                 ),
