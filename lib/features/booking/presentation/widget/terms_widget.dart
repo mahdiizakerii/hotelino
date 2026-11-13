@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 class TermsWidget extends StatefulWidget {
   static final GlobalKey<_TermsWidgetState> termsKey =
       GlobalKey<_TermsWidgetState>();
-  TermsWidget({Key? key}) : super(key: termsKey);
+  final bool initialValue;
+  final FormFieldValidator<bool>? validator;
+  final FormFieldSetter<bool>? onSaved;
+  TermsWidget({
+    Key? key,
+    required this.initialValue,
+    this.validator,
+    this.onSaved,
+  }) : super(key: termsKey);
 
   @override
   State<TermsWidget> createState() => _TermsWidgetState();
@@ -19,44 +27,74 @@ class _TermsWidgetState extends State<TermsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        GestureDetector(
-          onTap: () {
-            showTermsDialog(context);
-          },
-          child: RichText(
-            text: TextSpan(
-              style: Theme.of(context).textTheme.bodyMedium
-                  ?.copyWith(color: Colors.grey.shade700),
+    return FormField<bool>(
+      initialValue: widget.initialValue,
+      onSaved: widget.onSaved,
+      validator: widget.validator,
+      builder: (FormFieldState<bool> field) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const TextSpan(text: "قوانین برنامه"),
-                TextSpan(
-                  text: " هتلینو ",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.primary,
+                GestureDetector(
+                  onTap: () {
+                    showTermsDialog(context);
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(color: Colors.grey.shade700),
+                      children: [
+                        const TextSpan(text: "قوانین برنامه"),
+                        TextSpan(
+                          text: " هتلینو ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                        const TextSpan(text: "را خوانده و می پذیرم"),
+                      ],
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
                 ),
-                const TextSpan(text: "را خوانده و می پذیرم"),
+                Checkbox(
+                  visualDensity: VisualDensity(horizontal: -4),
+                  value: isChecked,
+                  onChanged: (value) {
+                    setState(() {
+                      isChecked = value ?? false;
+                    });
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                    side: BorderSide(
+                      color: field.hasError
+                          ? Theme.of(context).colorScheme.error
+                          : Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  activeColor: Theme.of(context).colorScheme.primary,
+                ),
               ],
             ),
-            textDirection: TextDirection.rtl,
-          ),
-        ),
-        Checkbox(
-          visualDensity: VisualDensity(horizontal: -4),
-          value: isChecked,
-          onChanged: (value) {
-            setState(() {
-              isChecked = value ?? false;
-            });
-          },
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-          activeColor: Theme.of(context).colorScheme.primary,
-        ),
-      ],
+            if (field.hasError)
+              Padding(
+                padding: const EdgeInsets.only(top: 8, right: 12),
+                child: Text(
+                  field.errorText ?? '',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 
