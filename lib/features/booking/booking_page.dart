@@ -24,6 +24,7 @@ class BookingPageState extends State<BookingPage> {
       () => _formKey.currentState?.reset(),
     );
     TermsWidget.termsKey.currentState?.resetCkeckbBox();
+    NumberFormField.numberFieldKey.currentState?.resetEnteredNumber();
     setState(() {});
   }
 
