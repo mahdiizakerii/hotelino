@@ -133,6 +133,21 @@ class BookingPageState extends State<BookingPage> {
                       },
                     ),
                     TermsWidget(),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("درخواست شما موفقیت آمیز بود"),
+                              ),
+                            );
+                          }
+                        },
+                        child: Text("جستجوی هتل"),
+                      ),
+                    ),
                   ],
                 ),
               );
