@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:hotelino/features/booking/presentation/provider/booking_provider.dart';
 import 'package:hotelino/features/booking/presentation/widget/booking_form_field.dart';
@@ -113,7 +111,7 @@ class BookingPageState extends State<BookingPage> {
                         }
                       },
                       validator: (value) {
-                        if (value == null) {
+                        if (value == null || value.trim().isEmpty) {
                           return "تعداد نفرات خود را وارد کنید";
                         }
                         return null;
@@ -137,7 +135,8 @@ class BookingPageState extends State<BookingPage> {
                     TermsWidget(
                       initialValue: false,
                       validator: (value) {
-                        if (value == null) {
+                        debugPrint('Terms value: $value');
+                        if (value != true) {
                           return "لطفا قوانین را تایید کنید";
                         }
                         return null;
@@ -148,6 +147,7 @@ class BookingPageState extends State<BookingPage> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
+                          debugPrint('BUTTON PRESSED');
                           if (_formKey.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

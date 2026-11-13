@@ -40,9 +40,6 @@ class _TermsWidgetState extends State<TermsWidget> {
       onSaved: widget.onSaved,
       validator: widget.validator,
       builder: (FormFieldState<bool> field) {
-        if (field.value != isChecked) {
-          field.didChange(isChecked);
-        }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -84,12 +81,13 @@ class _TermsWidgetState extends State<TermsWidget> {
                     width: 1.5,
                   ),
                   visualDensity: VisualDensity(horizontal: -4),
-                  value: isChecked,
+                  value: field.value,
                   onChanged: (value) {
                     setState(() {
                       isChecked = value ?? false;
-                      field.didChange(isChecked);
                     });
+
+                    field.didChange(isChecked);
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
