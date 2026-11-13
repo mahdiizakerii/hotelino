@@ -8,7 +8,7 @@ class FavoriteItemProvider extends ChangeNotifier {
   FavoriteItemProvider(this._hotelRepository);
   List<Hotel> _hotels = [];
   final List<String> _favoriteHotelId = [];
-  List<Hotel> get _favoriteHotelList =>
+  List<Hotel> get favoriteHotelList =>
       _hotels.where((hotels) => _favoriteHotelId.contains(hotels.id)).toList();
 
   fetchHotels() async {
