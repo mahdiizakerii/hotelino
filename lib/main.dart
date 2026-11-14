@@ -14,7 +14,6 @@ import 'package:hotelino/features/profile/provider/profile_provider.dart';
 import 'package:hotelino/features/profile/repository/profile_repository.dart';
 import 'package:hotelino/routes/app_routes.dart';
 import 'package:hotelino/shared/services/json_data_service.dart';
-import 'package:hotelino/shared/services/onboarding_storage_service.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -26,8 +25,6 @@ void main() async {
   await lazyBootStrap();
 
   final hotelRepository = HotelRepository(jsonDataService: JsonDataService());
-
-  final onboardingCompleted = await OnboardingStorageService.isCompleted();
 
   FlutterNativeSplash.remove();
 
@@ -51,15 +48,13 @@ void main() async {
         ),
         ChangeNotifierProvider(create: (_) => BookingProvider()),
       ],
-      child: MyApp(onboardingCompleted: onboardingCompleted),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
-  final bool onboardingCompleted;
-
-  const MyApp({super.key, required this.onboardingCompleted});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -93,6 +88,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Consumer<ThemeModeProvider>(
       builder: (context, value, child) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return MaterialApp(
           locale: const Locale("fa", "IR"),
           supportedLocales: const [Locale("fa", "IR"), Locale("en", "US")],
@@ -102,9 +98,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           ],
           title: 'Hotelino',
           routes: AppRoutes.routes,
-          initialRoute: widget.onboardingCompleted
-              ? AppRoutes.home
-              : AppRoutes.onboarding,
+          initialRoute: AppRoutes.onboarding,
           debugShowCheckedModeBanner: false,
           theme: value.brightness == Brightness.light
               ? AppTheme.lightTheme
