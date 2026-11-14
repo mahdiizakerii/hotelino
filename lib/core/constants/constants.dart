@@ -16,6 +16,7 @@ class AppColors {
   static const Color lightInputFill = Color(0xFF9196A3);
   static const Color lightBorder = Color(0xFF9196A3);
   static const Color lightFocusedBorder = Colors.brown;
+  static const Color lightIcon = Color.fromARGB(255, 97, 58, 44);
   // dart theme colors
   static const Color darkText = Colors.white;
   static const Color darkHint = Color(0xFF9196A3);

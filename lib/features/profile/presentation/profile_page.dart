@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hotelino/core/constants/constants.dart';
+import 'package:hotelino/features/profile/presentation/widget/profile_option_item.dart';
 import 'package:hotelino/features/profile/provider/profile_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +25,18 @@ class _ProfilePageState extends State<ProfilePage> {
         _image = File(picked.path);
       });
     }
+  }
+
+  void showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message, textDirection: TextDirection.rtl),
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        duration: Duration(seconds: 4),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
   }
 
   @override
@@ -76,13 +91,80 @@ class _ProfilePageState extends State<ProfilePage> {
                       profile.name,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 12),
                     Text(
                       profile.email,
                       style: Theme.of(context).textTheme.headlineSmall
                           ?.copyWith(color: Colors.grey),
                     ),
                     SizedBox(height: 24),
+                    ProfileOptionItem(
+                      title: "اطلاعات صفحه کاربری",
+                      icon: SvgPicture.asset(
+                        "assets/icon/profile.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onTap: () => showSnackBar(context, "اطلاعات صفحه کاربری"),
+                    ),
+                    ProfileOptionItem(
+                      title: "اعلان ها",
+                      icon: SvgPicture.asset(
+                        "assets/icon/notification.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onTap: () => showSnackBar(context, "نمایش اعلان ها"),
+                    ),
+                    ProfileOptionItem(
+                      title: "لیست مورد علاقه ها",
+                      icon: SvgPicture.asset(
+                        "assets/icon/favorite.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onTap: () =>
+                          showSnackBar(context, "نمایش لیست مورد علاقه ها"),
+                    ),
+                    ProfileOptionItem(
+                      title: "روش های پرداخت",
+                      icon: SvgPicture.asset(
+                        "assets/icon/payment.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onTap: () => showSnackBar(context, "نمایش روش پرداخت"),
+                    ),
+                    ProfileOptionItem(
+                      title: "تنظیمات",
+                      icon: SvgPicture.asset(
+                        "assets/icon/setting.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onTap: () => showSnackBar(context, "نمایش تنظیمات"),
+                    ),
+                    ProfileOptionItem(
+                      title: "تغییر رمز عبور",
+                      icon: SvgPicture.asset(
+                        "assets/icon/password.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onTap: () => showSnackBar(context, "تغییر رمز عبور"),
+                    ),
                   ],
                 ),
               ),
