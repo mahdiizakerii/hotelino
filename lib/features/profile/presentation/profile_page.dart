@@ -35,39 +35,56 @@ class _ProfilePageState extends State<ProfilePage> {
         return Scaffold(
           body: SafeArea(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 24),
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 55,
-                        backgroundImage: _image != null
-                            ? FileImage(_image!)
-                            : NetworkImage(profile.avatarUrl),
-                      ),
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: GestureDetector(
-                          onTap: _pickImage,
-                          child: Container(
-                            padding: EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primaryFixed,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                              size: 18,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  children: [
+                    SizedBox(height: 24),
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 55,
+                          backgroundImage: _image != null
+                              ? FileImage(_image!)
+                              : NetworkImage(profile.avatarUrl),
+                        ),
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: GestureDetector(
+                            onTap: _pickImage,
+                            child: Container(
+                              padding: EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryFixed,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                                size: 18,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      profile.name,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    SizedBox(height: 24),
+                    Text(
+                      profile.email,
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(color: Colors.grey),
+                    ),
+                    SizedBox(height: 24),
+                  ],
+                ),
               ),
             ),
           ),
