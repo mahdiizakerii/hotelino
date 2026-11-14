@@ -112,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ProfileOptionItem(
                       title: "اعلان ها",
                       icon: SvgPicture.asset(
-                        "assets/icon/notification.svg",
+                        "assets/icon/notif.svg",
                         colorFilter: ColorFilter.mode(
                           Theme.of(context).colorScheme.primary,
                           BlendMode.srcIn,
