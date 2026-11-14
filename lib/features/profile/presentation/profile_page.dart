@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hotelino/core/constants/constants.dart';
 import 'package:hotelino/features/profile/presentation/widget/profile_option_item.dart';
 import 'package:hotelino/features/profile/provider/profile_provider.dart';
 import 'package:image_picker/image_picker.dart';

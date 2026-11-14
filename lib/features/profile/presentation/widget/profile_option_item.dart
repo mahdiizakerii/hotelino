@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hotelino/core/constants/constants.dart';
 
 class ProfileOptionItem extends StatelessWidget {
   final String title;
