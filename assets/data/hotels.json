@@ -18,7 +18,7 @@
       "maxOccupancy": 2,
       "city": "دبی",
       "country": "امارات متحده عربی",
-      "address": "خیابان شیخ زاید، بلوک اول، منطقه بارشا، دبی",
+      "address": "خیابان شیخ زاید، بلوک اول، منطقه بارشا",
       "bedType": {
         "type": "Double Bed",
         "count": 2,
@@ -49,7 +49,7 @@
       "maxOccupancy": 2,
       "city": "استانبول",
       "country": "ترکیه",
-      "address": "خیابان استقلال، ساختمان B، منطقه قشلاق، استانبول",
+      "address": "خیابان استقلال، ساختمان B، منطقه قشلاق",
       "bedType": {
         "type": "Single Bed",
         "count": 1,
@@ -79,7 +79,7 @@
       "maxOccupancy": 3,
       "city": "استانبول",
       "country": "ترکیه",
-      "address": "خیابان جمهوریت، ساختمان 10، منطقه شیشلی، استانبول",
+      "address": "خیابان جمهوریت، ساختمان 10، منطقه شیشلی",
       "bedType": {
         "type": "Double Bed",
         "count": 2,
@@ -109,7 +109,7 @@
       "maxOccupancy": 2,
       "city": "استانبول",
       "country": "ترکیه",
-      "address": "خیابان نیستانسی، ساختمان C، منطقه نور، استانبول",
+      "address": "خیابان نیستانسی، ساختمان C، منطقه نور",
       "bedType": {
         "type": "Single Bed",
         "count": 1,
@@ -137,7 +137,7 @@
       "maxOccupancy": 4,
       "city": "بروکسل",
       "country": "بلژیک",
-      "address": "خیابان شاتولن، ساختمان D، منطقه مرکزی، بروکسل",
+      "address": "خیابان شاتولن، ساختمان D، منطقه مرکزی",
       "bedType": {
         "type": "Double Bed",
         "count": 2,
@@ -167,7 +167,7 @@
       "maxOccupancy": 1,
       "city": "بروکسل",
       "country": "بلژیک",
-      "address": "خیابان لویز، ساختمان E، منطقه شرق، بروکسل",
+      "address": "منطقه شرق، ساختمان E، خیابان لوییز",
       "bedType": {
         "type": "Single Bed",
         "count": 1,
@@ -195,7 +195,7 @@
       "maxOccupancy": 3,
       "city": "تهران",
       "country": "ایران",
-      "address": "خیابان ولیعصر، ساختمان 12، منطقه ونک، تهران",
+      "address": "خیابان ولیعصر، ساختمان 12، منطقه ونک",
       "bedType": {
         "type": "Queen Bed",
         "count": 1,
@@ -224,7 +224,7 @@
       "maxOccupancy": 2,
       "city": "بندرعباس",
       "country": "ایران",
-      "address": "خیابان میرزا، بلوک ساحلی، منطقه بندرعباس",
+      "address": "خیابان میرزا، بلوار ساحلی",
       "bedType": {
         "type": "Double Bed",
         "count": 2,
@@ -254,7 +254,7 @@
       "maxOccupancy": 2,
       "city": "یزد",
       "country": "ایران",
-      "address": "خیابان زیرک، ساختمان تاریخی، منطقه یزد",
+      "address": "خیابان زیرک، ساختمان تاریخی",
       "bedType": {
         "type": "Single Bed",
         "count": 1,
@@ -282,7 +282,7 @@
       "maxOccupancy": 3,
       "city": "مشهد",
       "country": "ایران",
-      "address": "خیابان مبلغان، ساختمان البرز، منطقه امام رضا، مشهد",
+      "address": "خیابان مبلغان، ساختمان البرز",
       "bedType": {
         "type": "King Bed",
         "count": 1,

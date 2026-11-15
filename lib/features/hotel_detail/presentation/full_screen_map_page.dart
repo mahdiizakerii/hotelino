@@ -20,10 +20,8 @@ class FullScreenMapPage extends StatelessWidget {
       body: FlutterMap(
         options: MapOptions(
           initialCenter: LatLng(latitude, longitude),
-          initialZoom: 10.0,
-          interactionOptions: InteractionOptions(
-            flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-          ),
+          initialZoom: 15.0,
+          interactionOptions: InteractionOptions(flags: InteractiveFlag.all),
         ),
         children: [
           TileLayer(

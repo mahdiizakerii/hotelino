@@ -99,6 +99,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
     return PersistentTabView(
       context,
       handleAndroidBackButtonPress: false,
+      bottomScreenMargin: 70,
       onItemSelected: (index) {
         unfucosEditor(context);
         if (index != 2) {

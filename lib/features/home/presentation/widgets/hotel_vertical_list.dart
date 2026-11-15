@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/presentation/widgets/hotel_card_vertical.dart';
-import 'package:hotelino/features/hotel_detail/presentation/hotel_detail_page.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HotelVerticalList extends StatelessWidget {
   final String title;
@@ -19,7 +17,7 @@ class HotelVerticalList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.only(right: 16),
           child: Text(
             title,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -31,7 +29,7 @@ class HotelVerticalList extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: HotelCardVertical(hotel: hotels[index]),
             );
           },
