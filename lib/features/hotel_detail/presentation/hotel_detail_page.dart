@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/core/utils/networkUrl.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
 import 'package:hotelino/shared/services/json_data_service.dart';
@@ -20,7 +21,25 @@ class HotelDetailPage extends StatelessWidget {
           );
         }
         final hotel = snapshot.data;
-        return Scaffold();
+        return Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                floating: true,
+                pinned: false,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: GestureDetector(
+                    onLongPress: () {},
+                    child: Image.network(
+                      netwrkUrl(hotel!.images.first),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
