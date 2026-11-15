@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:hotelino/core/utils/networkUrl.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
+import 'package:hotelino/features/hotel_detail/presentation/full_screen_map_page.dart';
 import 'package:hotelino/shared/services/json_data_service.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -189,7 +190,19 @@ class HotelDetailPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                withNavBar: false,
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
+                                screen: FullScreenMapPage(
+                                  latitude: hotel.location.latitude,
+                                  longitude: hotel.location.longitude,
+                                  hotelName: hotel.name,
+                                ),
+                              );
+                            },
                             child: Text("باز کردن نقشه"),
                           ),
                           Text(
