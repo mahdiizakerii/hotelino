@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:hotelino/core/utils/networkUrl.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
+import 'package:hotelino/features/hotel_detail/presentation/full_screen_image_shower.dart';
 import 'package:hotelino/features/hotel_detail/presentation/full_screen_map_page.dart';
 import 'package:hotelino/shared/services/json_data_service.dart';
 import 'package:latlong2/latlong.dart';
@@ -34,7 +35,17 @@ class HotelDetailPage extends StatelessWidget {
                 pinned: false,
                 flexibleSpace: FlexibleSpaceBar(
                   background: GestureDetector(
-                    onLongPress: () {},
+                    onLongPress: () {
+                      PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        withNavBar: false,
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
+                        screen: FullScreenImageShower(
+                          myimageUrl: hotel.images.first,
+                        ),
+                      );
+                    },
                     child: Image.network(
                       netwrkUrl(hotel!.images.first),
                       fit: BoxFit.cover,
@@ -153,7 +164,17 @@ class HotelDetailPage extends StatelessWidget {
                             return Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    PersistentNavBarNavigator.pushNewScreen(
+                                      context,
+                                      withNavBar: false,
+                                      pageTransitionAnimation:
+                                          PageTransitionAnimation.cupertino,
+                                      screen: FullScreenImageShower(
+                                        myimageUrl: hotel.images[index],
+                                      ),
+                                    );
+                                  },
                                   child: ClipRRect(
                                     borderRadius: BorderRadiusGeometry.circular(
                                       12,
