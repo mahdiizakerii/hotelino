@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hotelino/core/utils/networkUrl.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 import 'package:hotelino/features/home/data/repository/hotel_repository.dart';
@@ -131,6 +132,42 @@ class HotelDetailPage extends StatelessWidget {
                             ],
                           );
                         }).toList(),
+                      ),
+                      SizedBox(height: 16),
+                      Text(
+                        "گالری تصاویر",
+                        style: texTheme.headlineSmall,
+                        textDirection: TextDirection.rtl,
+                      ),
+                      SizedBox(height: 8),
+                      SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          reverse: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: hotel.images.length,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadiusGeometry.circular(
+                                      12,
+                                    ),
+                                    child: Image.network(
+                                      netwrkUrl(hotel.images[index]),
+                                      width: 120,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                if (index != 0) SizedBox(width: 8),
+                              ],
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
